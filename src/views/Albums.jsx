@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { apiGetAlbums, apiGetArtists } from "dataLayer/apiClient";
-import Division from "components/atoms/Division/Division";
-import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
-import { getArtistTitleById } from "dataLayer/helper";
 import { useLocation } from "react-router-dom";
 import { parseUrl } from "query-string";
+
+import { apiGetAlbums, apiGetArtists } from "dataLayer/apiClient";
+import { getArtistTitleById } from "dataLayer/helper";
+
+import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
 import Header from "components/organisms/Header/Header";
 
@@ -33,11 +34,10 @@ export default function Albums(props) {
 
   return (
     <Fragment>
-      <Header>Album list</Header>
+      <Header search>Album list</Header>
 
       <ViewContainer>
-        {albums &&
-          albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+        {albums && albums.map((item) => <AlbumRow key={item.id} item={item} />)}
       </ViewContainer>
     </Fragment>
   );

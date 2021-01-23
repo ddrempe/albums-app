@@ -1,8 +1,9 @@
 import Division from "components/atoms/Division/Division";
+import Button from "components/atoms/Button/Button";
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.header`
+const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding-left: 10%;
@@ -10,12 +11,21 @@ const Container = styled.header`
 `;
 
 export default function Header(props) {
-  const { children, ...rest } = props;
+  const {
+    children,
+    search,
+    actionButton,
+    onActionButtonClick,
+    ...rest
+  } = props;
 
   return (
-    <Container>
+    <StyledHeader>
       <Division>{children}</Division>
-      <Division>Search bar</Division>
-    </Container>
+      {search && <Division>Search bar</Division>}
+      {onActionButtonClick && (
+        <Button value={"Back"} onClick={onActionButtonClick} />
+      )}
+    </StyledHeader>
   );
 }

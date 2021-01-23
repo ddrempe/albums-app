@@ -3,6 +3,7 @@ import Division from "components/atoms/Division/Division";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { ROUTE_ALBUMS, ROUTE_ARTIST } from "routes";
+import Button from "components/atoms/Button/Button";
 
 const Container = styled(Division)`
   display: grid;
@@ -36,7 +37,21 @@ export default function AlbumRow(props) {
       </ReleaseDate>
       <Price>{item.price}</Price>
       <Favorite>
-        {item.favorite ? "Remove favorite" : "Mark as favorite"}
+        {item.favorite ? (
+          <Button
+            value={"Remove favorite"}
+            onClick={() => {
+              console.log("Remove favorite");
+            }}
+          />
+        ) : (
+          <Button
+            value={"Mark as favorite"}
+            onClick={() => {
+              console.log("Mark as favorite");
+            }}
+          />
+        )}
       </Favorite>
     </Container>
   );

@@ -1,13 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  apiGetAlbums,
-  apiGetAlbumsByArtistId,
-  apiGetArtists,
-} from "dataLayer/apiClient";
-import Division from "components/atoms/Division/Division";
-import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
+import { useHistory, useParams } from "react-router-dom";
+
+import { apiGetAlbumsByArtistId, apiGetArtists } from "dataLayer/apiClient";
 import { getArtistTitleById } from "dataLayer/helper";
-import { useParams } from "react-router-dom";
+
+import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import Header from "components/organisms/Header/Header";
 import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
 
@@ -25,7 +22,7 @@ export default function Artist(props) {
     const responseArtists = await apiGetArtists();
     const responseAlbums = await apiGetAlbumsByArtistId(artistId);
     const title = getArtistTitleById(responseArtists, artistId);
-    console.log(title);
+
     let albumsWithArtistNames = responseAlbums.map((album) => {
       return {
         ...album,
@@ -36,13 +33,21 @@ export default function Artist(props) {
     setArtistTitle(title);
   };
 
+  const history = useHistory();
+
   return (
     <Fragment>
-      <Header>{artistTitle}</Header>
+      <Header
+        actionButton="Back"
+        onActionButtonClick={() => {
+          history.goBack();
+        }}
+      >
+        {artistTitle}
+      </Header>
 
       <ViewContainer>
-        {albums &&
-          albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+        {albums && albums.map((item) => <AlbumRow key={item.id} item={item} />)}
       </ViewContainer>
     </Fragment>
   );

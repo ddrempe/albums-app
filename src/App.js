@@ -1,5 +1,3 @@
-import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
-import Header from "components/organisms/Header/Header";
 import { Fragment } from "react";
 import {
   BrowserRouter as Router,
