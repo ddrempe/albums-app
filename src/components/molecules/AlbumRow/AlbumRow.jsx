@@ -3,47 +3,32 @@ import Division from "components/atoms/Division/Division";
 import styled from "styled-components";
 
 const Container = styled(Division)`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 15% 40% 15% 15% 15%;
 `;
 
-const Column = styled(Division)`
-  background: tomato;
-  padding: 5px;
-  line-height: 150px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.8em;
-  text-align: center;
-`;
-
-const Cover = styled(Division)`
-  flex-grow: 1;
-`;
-const Title = styled(Division)`
-  flex-grow: 3;
-`;
-const Price = styled(Division)`
-  flex-grow: 1;
-`;
-const Favorite = styled(Division)`
-  flex-grow: 1;
-`;
-const ReleaseDate = styled(Division)`
-  flex-grow: 1;
-`;
+const Cover = styled(Division)``;
+const Title = styled(Division)``;
+const Price = styled(Division)``;
+const Favorite = styled(Division)``;
+const ReleaseDate = styled(Division)``;
 
 export default function AlbumRow(props) {
   const { item, children, ...rest } = props;
 
   return (
     <Container>
-      {/* <Cover>{item.imageUrl}</Cover> */}
-      <Title>{item.title}</Title>
+      <img src={item.imageUrl} alt="" />
+
+      <Title>
+        <div>{item.title}</div>
+        <div>{item.artistId}</div>
+      </Title>
+      <ReleaseDate>Released: {item.releaseDate}</ReleaseDate>
       <Price>{item.price}</Price>
-      <Favorite>{item.favorite ? "yes" : "no"}</Favorite>
-      <ReleaseDate>{item.releaseDate}</ReleaseDate>
+      <Favorite>
+        {item.favorite ? "Remove favorite" : "Mark as favorite"}
+      </Favorite>
     </Container>
   );
 }

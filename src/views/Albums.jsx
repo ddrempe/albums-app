@@ -27,7 +27,7 @@ export default function Albums(props) {
       <VerticalListContainer>
         {albums &&
           albums.map((item, ix) => (
-            <VerticalListItem key={ix}>
+            <VerticalListItem key={item.id}>
               <AlbumRow item={item} />
             </VerticalListItem>
           ))}
