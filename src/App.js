@@ -1,5 +1,6 @@
-import AppContainer from "components/molecules/AppContainer/AppContainer";
+import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
 import Header from "components/organisms/Header/Header";
+import { Fragment } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,8 +14,7 @@ import NotFound from "views/NotFound";
 
 function App() {
   return (
-    <AppContainer>
-      <Header>Album list</Header>
+    <Fragment>
       <Router>
         <Switch>
           <Route path={`${ROUTE_ARTIST}/:artistId`}>
@@ -29,7 +29,7 @@ function App() {
           <Redirect to={ROUTE_NOT_FOUND} />
         </Switch>
       </Router>
-    </AppContainer>
+    </Fragment>
   );
 }
 

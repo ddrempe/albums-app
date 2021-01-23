@@ -7,6 +7,8 @@ import { ROUTE_ALBUMS, ROUTE_ARTIST } from "routes";
 const Container = styled(Division)`
   display: grid;
   grid-template-columns: 15% 40% 15% 15% 15%;
+  background-color: white;
+  margin-bottom: 10px;
 `;
 
 const Cover = styled(Division)``;

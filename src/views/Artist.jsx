@@ -8,11 +8,14 @@ import Division from "components/atoms/Division/Division";
 import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import { getArtistTitleById } from "dataLayer/helper";
 import { useParams } from "react-router-dom";
+import Header from "components/organisms/Header/Header";
+import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
 
 export default function Artist(props) {
   let { artistId } = useParams();
 
   const [albums, setAlbums] = useState([]);
+  const [artistTitle, setArtistTitle] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -21,22 +24,26 @@ export default function Artist(props) {
   const fetchData = async () => {
     const responseArtists = await apiGetArtists();
     const responseAlbums = await apiGetAlbumsByArtistId(artistId);
-
+    const title = getArtistTitleById(responseArtists, artistId);
+    console.log(title);
     let albumsWithArtistNames = responseAlbums.map((album) => {
       return {
         ...album,
-        artist: getArtistTitleById(responseArtists, album.artistId),
+        artist: title,
       };
     });
     setAlbums(albumsWithArtistNames);
+    setArtistTitle(title);
   };
 
   return (
     <Fragment>
-      <Division>Artist</Division>
+      <Header>{artistTitle}</Header>
 
-      {albums &&
-        albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+      <ViewContainer>
+        {albums &&
+          albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+      </ViewContainer>
     </Fragment>
   );
 }

@@ -5,6 +5,8 @@ import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import { getArtistTitleById } from "dataLayer/helper";
 import { useLocation } from "react-router-dom";
 import { parseUrl } from "query-string";
+import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
+import Header from "components/organisms/Header/Header";
 
 export default function Albums(props) {
   const location = useLocation();
@@ -31,10 +33,12 @@ export default function Albums(props) {
 
   return (
     <Fragment>
-      <Division>Albums</Division>
+      <Header>Album list</Header>
 
-      {albums &&
-        albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+      <ViewContainer>
+        {albums &&
+          albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
+      </ViewContainer>
     </Fragment>
   );
 }
