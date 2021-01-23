@@ -1,6 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { apiGetAlbums } from "dataLayer/apiClient";
 import Division from "components/atoms/Division/Division";
+import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
+import styled from "styled-components";
+
+const VerticalListContainer = styled(Division)``;
+
+const VerticalListItem = styled(Division)``;
 
 export default function Albums(props) {
   const [albums, setAlbums] = useState([]);
@@ -18,15 +24,14 @@ export default function Albums(props) {
   return (
     <Fragment>
       <Division>Albums</Division>
-      {albums &&
-        albums.map((item, ix) => (
-          <Division key={ix}>
-            <Division>{item.title}</Division>
-            <Division>{item.price}</Division>
-            <Division>{item.favorite}</Division>
-            <Division>{item.releaseDate}</Division>
-          </Division>
-        ))}
+      <VerticalListContainer>
+        {albums &&
+          albums.map((item, ix) => (
+            <VerticalListItem key={ix}>
+              <AlbumRow item={item} />
+            </VerticalListItem>
+          ))}
+      </VerticalListContainer>
     </Fragment>
   );
 }
