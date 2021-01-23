@@ -1,12 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { apiGetAlbums } from "dataLayer/apiClient";
+import { apiGetAlbums, apiGetArtists } from "dataLayer/apiClient";
 import Division from "components/atoms/Division/Division";
 import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
-import styled from "styled-components";
-
-const VerticalListContainer = styled(Division)``;
-
-const VerticalListItem = styled(Division)``;
+import { getArtistTitleById } from "dataLayer/helper";
 
 export default function Albums(props) {
   const [albums, setAlbums] = useState([]);
@@ -16,22 +12,23 @@ export default function Albums(props) {
   }, []);
 
   const fetchData = async () => {
-    const response = await apiGetAlbums();
-    console.log(response);
-    setAlbums(response);
+    const responseArtists = await apiGetArtists();
+    const responseAlbums = await apiGetAlbums();
+    let albumsWithArtistNames = responseAlbums.map((album) => {
+      return {
+        ...album,
+        artist: getArtistTitleById(responseArtists, album.artistId),
+      };
+    });
+    setAlbums(albumsWithArtistNames);
   };
 
   return (
     <Fragment>
       <Division>Albums</Division>
-      <VerticalListContainer>
-        {albums &&
-          albums.map((item, ix) => (
-            <VerticalListItem key={item.id}>
-              <AlbumRow item={item} />
-            </VerticalListItem>
-          ))}
-      </VerticalListContainer>
+
+      {albums &&
+        albums.map((item, ix) => <AlbumRow key={item.id} item={item} />)}
     </Fragment>
   );
 }

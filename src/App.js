@@ -17,7 +17,7 @@ function App() {
       <Header>Album list</Header>
       <Router>
         <Switch>
-          <Route path={ROUTE_ARTIST}>
+          <Route path={`${ROUTE_ARTIST}/:artistId`}>
             <Artist />
           </Route>
           <Route exact path={ROUTE_ALBUMS}>
