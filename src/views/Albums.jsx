@@ -66,9 +66,8 @@ export default function Albums(props) {
         inputPlaceholder="Search"
         onInputChange={handleOnInputChange}
         onInputSubmit={handleOnInputSubmit}
-      >
-        Album list
-      </Header>
+        title="Album list"
+      />
 
       <AlbumList
         albums={albums}

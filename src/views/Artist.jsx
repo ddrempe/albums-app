@@ -47,9 +47,8 @@ export default function Artist(props) {
       <Header
         actionButton="Back to all albums"
         onActionButtonClick={() => history.push(ROUTE_ALBUMS)}
-      >
-        {artistTitle}
-      </Header>
+        title={artistTitle}
+      />
 
       <AlbumList
         albums={albums}
