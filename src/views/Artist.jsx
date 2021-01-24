@@ -1,13 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { ROUTE_ALBUMS } from "routes";
 
-import { apiGetAlbumsByArtistId, apiGetArtists } from "dataLayer/apiClient";
+import {
+  apiGetAlbumsByArtistId,
+  apiGetArtists,
+  apiPutAlbums,
+} from "dataLayer/apiClient";
 import { getArtistTitleById } from "dataLayer/helper";
 
-import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import Header from "components/organisms/Header/Header";
-import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
-import { ROUTE_ALBUMS } from "routes";
+import AlbumList from "components/organisms/AlbumList/AlbumList";
 
 export default function Artist(props) {
   let { artistId } = useParams();
@@ -34,6 +37,15 @@ export default function Artist(props) {
     setArtistTitle(title);
   };
 
+  const handleOnClickMarkFavorite = (item) => {
+    apiPutAlbums(item.id, { ...item, favorite: !item.favorite });
+    /**
+     * Instead of the fetching the new data from the API each time, optimistic approach could be implemented.
+     * This means updating state locally assuming data is changed on the backend successfully.
+     */
+    fetchData();
+  };
+
   const history = useHistory();
 
   return (
@@ -45,9 +57,10 @@ export default function Artist(props) {
         {artistTitle}
       </Header>
 
-      <ViewContainer>
-        {albums && albums.map((item) => <AlbumRow key={item.id} item={item} />)}
-      </ViewContainer>
+      <AlbumList
+        albums={albums}
+        onClickMarkFavorite={(item) => handleOnClickMarkFavorite(item)}
+      />
     </Fragment>
   );
 }

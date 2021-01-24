@@ -5,9 +5,8 @@ import { parseUrl } from "query-string";
 import { apiGetAlbums, apiGetArtists, apiPutAlbums } from "dataLayer/apiClient";
 import { getArtistTitleById } from "dataLayer/helper";
 
-import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
-import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
 import Header from "components/organisms/Header/Header";
+import AlbumList from "components/organisms/AlbumList/AlbumList";
 
 export default function Albums(props) {
   const location = useLocation();
@@ -32,7 +31,7 @@ export default function Albums(props) {
     setAlbums(albumsWithArtistNames);
   };
 
-  const handleClickMarkFavorite = (item) => {
+  const handleOnClickMarkFavorite = (item) => {
     apiPutAlbums(item.id, { ...item, favorite: !item.favorite });
     /**
      * Instead of the fetching the new data from the API each time, optimistic approach could be implemented.
@@ -43,18 +42,23 @@ export default function Albums(props) {
 
   return (
     <Fragment>
-      <Header search>Album list</Header>
+      <Header
+        inputPlaceholder="Search"
+        onInputChange={(event) => {
+          console.log("onInputChange", event.target.value);
+        }}
+        inputSubmit={"GO"}
+        onInputSubmit={() => {
+          console.log("onInputSubmit");
+        }}
+      >
+        Album list
+      </Header>
 
-      <ViewContainer>
-        {albums &&
-          albums.map((item) => (
-            <AlbumRow
-              key={item.id}
-              item={item}
-              onClickMarkFavorite={() => handleClickMarkFavorite(item)}
-            />
-          ))}
-      </ViewContainer>
+      <AlbumList
+        albums={albums}
+        onClickMarkFavorite={(item) => handleOnClickMarkFavorite(item)}
+      />
     </Fragment>
   );
 }

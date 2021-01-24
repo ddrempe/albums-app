@@ -1,5 +1,6 @@
 import Division from "components/atoms/Division/Division";
 import Button from "components/atoms/Button/Button";
+import Input from "components/atoms/Input/Input";
 import React from "react";
 import styled from "styled-components";
 
@@ -14,16 +15,23 @@ const StyledHeader = styled.header`
 export default function Header(props) {
   const {
     children,
-    search,
     actionButton,
     onActionButtonClick,
-    ...rest
+    inputPlaceholder,
+    onInputChange,
+    inputSubmit,
+    onInputSubmit,
   } = props;
 
   return (
     <StyledHeader>
       <Division>{children}</Division>
-      {search && <Division>Search bar</Division>}
+      {onInputChange && (
+        <Division>
+          <Input placeholder={inputPlaceholder} onChange={onInputChange} />
+          <Button value={inputSubmit} onClick={onInputSubmit} />
+        </Division>
+      )}
       {onActionButtonClick && (
         <Button value={actionButton} onClick={onActionButtonClick} />
       )}
