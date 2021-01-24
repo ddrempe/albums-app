@@ -22,6 +22,11 @@ export const apiGetAlbums = async () => {
   return response.data;
 };
 
+export const apiGetAlbumsFiltered = async (query) => {
+  const response = await axiosGET(`${URL_ALBUMS}?q=${query}`);
+  return response.data;
+};
+
 export const apiGetAlbumsByArtistId = async (artistId) => {
   const response = await axiosGET(`${URL_ALBUMS}?artistId=${artistId}`);
   return response.data;

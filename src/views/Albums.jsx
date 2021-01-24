@@ -2,8 +2,13 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { parseUrl } from "query-string";
 
-import { apiGetAlbums, apiGetArtists, apiPutAlbums } from "dataLayer/apiClient";
-import { getArtistTitleById } from "dataLayer/helper";
+import {
+  apiGetAlbums,
+  apiGetAlbumsFiltered,
+  apiGetArtists,
+  apiPutAlbums,
+} from "dataLayer/apiClient";
+import { mapArtistTitlesToAlbums } from "dataLayer/helper";
 
 import Header from "components/organisms/Header/Header";
 import AlbumList from "components/organisms/AlbumList/AlbumList";
@@ -14,6 +19,7 @@ export default function Albums(props) {
   const limit = limitParam ? limitParam : 10;
 
   const [albums, setAlbums] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
@@ -23,13 +29,9 @@ export default function Albums(props) {
   const fetchData = async () => {
     const responseArtists = await apiGetArtists();
     const responseAlbums = await apiGetAlbums();
-    let albumsWithArtistNames = responseAlbums.map((album) => {
-      return {
-        ...album,
-        artist: getArtistTitleById(responseArtists, album.artistId),
-      };
-    });
-    setAlbums(albumsWithArtistNames);
+
+    setArtists(responseArtists);
+    setAlbums(mapArtistTitlesToAlbums(responseAlbums, responseArtists));
   };
 
   const handleOnClickMarkFavorite = (item) => {
@@ -41,19 +43,23 @@ export default function Albums(props) {
     fetchData();
   };
 
+  const handleOnInputChange = (value) => {
+    setSearchValue(value);
+  };
+
+  const handleOnInputSubmit = async (value) => {
+    const response = await apiGetAlbumsFiltered(searchValue);
+    setAlbums(mapArtistTitlesToAlbums(response, artists));
+  };
+
   return (
     <Fragment>
       <Header
         search
         inputPlaceholder="Search"
-        onInputChange={(value) => {
-          console.log("onInputChange", value);
-          setSearchValue(value);
-        }}
+        onInputChange={handleOnInputChange}
         inputSubmit={"GO"}
-        onInputSubmit={() => {
-          console.log("onInputSubmit");
-        }}
+        onInputSubmit={handleOnInputSubmit}
       >
         Album list
       </Header>

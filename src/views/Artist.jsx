@@ -7,7 +7,7 @@ import {
   apiGetArtists,
   apiPutAlbums,
 } from "dataLayer/apiClient";
-import { getArtistTitleById } from "dataLayer/helper";
+import { getArtistTitleById, mapArtistTitlesToAlbums } from "dataLayer/helper";
 
 import Header from "components/organisms/Header/Header";
 import AlbumList from "components/organisms/AlbumList/AlbumList";
@@ -27,13 +27,7 @@ export default function Artist(props) {
     const responseAlbums = await apiGetAlbumsByArtistId(artistId);
     const title = getArtistTitleById(responseArtists, artistId);
 
-    let albumsWithArtistNames = responseAlbums.map((album) => {
-      return {
-        ...album,
-        artist: title,
-      };
-    });
-    setAlbums(albumsWithArtistNames);
+    setAlbums(mapArtistTitlesToAlbums(responseAlbums, responseArtists));
     setArtistTitle(title);
   };
 
