@@ -18,7 +18,7 @@ const SearchBarContainer = styled(Division)`
 `;
 
 const SearchBarInput = styled(Input)`
-  min-width: 380px;
+  min-width: 332px;
   background: #ffffff;
   font-family: Work Sans;
   font-style: normal;
