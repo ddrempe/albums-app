@@ -7,6 +7,7 @@ import { getArtistTitleById } from "dataLayer/helper";
 import AlbumRow from "components/molecules/AlbumRow/AlbumRow";
 import Header from "components/organisms/Header/Header";
 import ViewContainer from "components/molecules/ViewContainer/ViewContainer";
+import { ROUTE_ALBUMS } from "routes";
 
 export default function Artist(props) {
   let { artistId } = useParams();
@@ -38,10 +39,8 @@ export default function Artist(props) {
   return (
     <Fragment>
       <Header
-        actionButton="Back"
-        onActionButtonClick={() => {
-          history.goBack();
-        }}
+        actionButton="Back to all albums"
+        onActionButtonClick={() => history.push(ROUTE_ALBUMS)}
       >
         {artistTitle}
       </Header>

@@ -6,6 +6,8 @@ const StyledViewContainer = styled(Division)`
   background-color: #f2f2f2;
   padding-left: 10%;
   padding-right: 10%;
+  min-height: 85vh;
+  padding-top: 5vh;
 `;
 
 export default function ViewContainer(props) {

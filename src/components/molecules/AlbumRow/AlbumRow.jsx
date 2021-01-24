@@ -1,8 +1,9 @@
-import React, { Fragment } from "react";
-import Division from "components/atoms/Division/Division";
-import styled from "styled-components";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { ROUTE_ALBUMS, ROUTE_ARTIST } from "routes";
+import { ROUTE_ARTIST } from "routes";
+import styled from "styled-components";
+
+import Division from "components/atoms/Division/Division";
 import Button from "components/atoms/Button/Button";
 
 const Container = styled(Division)`

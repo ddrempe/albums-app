@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   padding-left: 10%;
   padding-right: 10%;
+  min-height: 10vh;
 `;
 
 export default function Header(props) {
@@ -24,7 +25,7 @@ export default function Header(props) {
       <Division>{children}</Division>
       {search && <Division>Search bar</Division>}
       {onActionButtonClick && (
-        <Button value={"Back"} onClick={onActionButtonClick} />
+        <Button value={actionButton} onClick={onActionButtonClick} />
       )}
     </StyledHeader>
   );
