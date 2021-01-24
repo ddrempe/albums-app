@@ -15,7 +15,7 @@ import AlbumList from "components/organisms/AlbumList/AlbumList";
 export default function Artist(props) {
   let { artistId } = useParams();
 
-  const [albums, setAlbums] = useState([]);
+  const [albums, setAlbums] = useState(undefined);
   const [artistTitle, setArtistTitle] = useState([]);
 
   useEffect(() => {

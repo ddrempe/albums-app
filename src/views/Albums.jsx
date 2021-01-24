@@ -18,7 +18,7 @@ export default function Albums(props) {
   const limitParam = parseUrl(location.search).query.limit;
   const limit = limitParam ? limitParam : 10;
 
-  const [albums, setAlbums] = useState([]);
+  const [albums, setAlbums] = useState(undefined);
   const [artists, setArtists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [currentLimitValue, setCurrentLimitValue] = useState(0);
