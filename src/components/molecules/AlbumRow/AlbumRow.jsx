@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import Division from "components/atoms/Division/Division";
 import Button from "components/atoms/Button/Button";
+import { ReactComponent as StarIcon } from "assets/icons/star.svg";
 
 const Container = styled(Division)`
   display: grid;
@@ -16,11 +17,24 @@ const Container = styled(Division)`
   align-items: center;
 `;
 
+const CoverContainer = styled(Division)`
+  position: relative;
+  width: 58px;
+  height: 58px;
+`;
+
 const Cover = styled.img`
-  width: 54px;
-  height: 54px;
   border: 1px solid #eeeeee;
   border-radius: 4px;
+  width: 100%;
+  height: auto;
+`;
+
+const CoverIcon = styled(Division)`
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 18px;
 `;
 
 const Text = styled.span`
@@ -38,7 +52,7 @@ const AlbumTitle = styled(Division)`
 `;
 
 const ArtistTitle = styled(Text)`
-  font-weight: normal;
+  font-weight: 500;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
@@ -58,9 +72,11 @@ const ReleasedLabel = styled(Text)`
 const ReleasedValue = styled(Text)`
   font-size: 14px;
   color: #000000;
+  font-weight: 500;
 `;
 
 const Price = styled(Text)`
+  font-weight: 500;
   text-align: center;
   line-height: 14px;
 `;
@@ -72,7 +88,14 @@ export default function AlbumRow(props) {
 
   return (
     <Container>
-      <Cover src={item.imageUrl} alt="" />
+      <CoverContainer>
+        <Cover src={item.imageUrl} alt="" />
+        {item.favorite && (
+          <CoverIcon>
+            <StarIcon />
+          </CoverIcon>
+        )}
+      </CoverContainer>
 
       <Division>
         <AlbumTitle>{item.title}</AlbumTitle>

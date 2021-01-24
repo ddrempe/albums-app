@@ -50,7 +50,9 @@ export default function Albums(props) {
 
   const handleOnInputSubmit = async () => {
     if (currentLimitValue >= limit) {
-      alert(`API LIMIT REACHED ${currentLimitValue}/${limit}`);
+      alert(
+        `We are sorry! You have reached the API limit. ${currentLimitValue}/${limit}`
+      );
       return;
     }
 
