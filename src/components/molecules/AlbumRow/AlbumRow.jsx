@@ -19,7 +19,7 @@ const Favorite = styled(Division)``;
 const ReleaseDate = styled(Division)``;
 
 export default function AlbumRow(props) {
-  const { item, children, ...rest } = props;
+  const { item, children, onClickMarkFavorite, ...rest } = props;
   const history = useHistory();
 
   return (
@@ -39,18 +39,12 @@ export default function AlbumRow(props) {
       <Favorite>
         {item.favorite ? (
           <Button
+            secondary
             value={"Remove favorite"}
-            onClick={() => {
-              console.log("Remove favorite");
-            }}
+            onClick={onClickMarkFavorite}
           />
         ) : (
-          <Button
-            value={"Mark as favorite"}
-            onClick={() => {
-              console.log("Mark as favorite");
-            }}
-          />
+          <Button value={"Mark as favorite"} onClick={onClickMarkFavorite} />
         )}
       </Favorite>
     </Container>

@@ -30,6 +30,8 @@ const PrimaryButton = styled(BaseButton)`
 
 const SecondaryButton = styled(BaseButton)`
   background: white;
+  color: #13d6ea;
+  text-decoration: underline;
   &:hover {
     background: #13d6ea;
     border: 1px solid white;
