@@ -13,14 +13,13 @@ const Container = styled(Division)`
   margin-bottom: 10px;
 `;
 
-const Cover = styled(Division)``;
 const Title = styled(Division)``;
 const Price = styled(Division)``;
 const Favorite = styled(Division)``;
 const ReleaseDate = styled(Division)``;
 
 export default function AlbumRow(props) {
-  const { item, children, onClickMarkFavorite, ...rest } = props;
+  const { item, onClickMarkFavorite } = props;
   const history = useHistory();
 
   return (

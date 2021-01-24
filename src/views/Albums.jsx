@@ -21,6 +21,7 @@ export default function Albums(props) {
   const [albums, setAlbums] = useState([]);
   const [artists, setArtists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [currentLimitValue, setCurrentLimitValue] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -47,9 +48,15 @@ export default function Albums(props) {
     setSearchValue(value);
   };
 
-  const handleOnInputSubmit = async (value) => {
+  const handleOnInputSubmit = async () => {
+    if (currentLimitValue >= limit) {
+      alert(`API LIMIT REACHED ${currentLimitValue}/${limit}`);
+      return;
+    }
+
     const response = await apiGetAlbumsFiltered(searchValue);
     setAlbums(mapArtistTitlesToAlbums(response, artists));
+    setCurrentLimitValue(currentLimitValue + 1);
   };
 
   return (
