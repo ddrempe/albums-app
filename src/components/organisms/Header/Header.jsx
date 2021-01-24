@@ -21,7 +21,6 @@ export default function Header(props) {
     search,
     inputPlaceholder,
     onInputChange,
-    inputSubmit,
     onInputSubmit,
   } = props;
 
@@ -32,7 +31,6 @@ export default function Header(props) {
         <SearchBar
           inputPlaceholder={inputPlaceholder}
           onInputChange={onInputChange}
-          inputSubmit={inputSubmit}
           onInputSubmit={onInputSubmit}
         />
       )}

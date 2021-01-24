@@ -65,7 +65,6 @@ export default function Albums(props) {
         search
         inputPlaceholder="Search"
         onInputChange={handleOnInputChange}
-        inputSubmit={"GO"}
         onInputSubmit={handleOnInputSubmit}
       >
         Album list
