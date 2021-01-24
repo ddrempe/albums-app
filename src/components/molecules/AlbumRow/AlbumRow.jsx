@@ -9,18 +9,30 @@ import { ReactComponent as StarIcon } from "assets/icons/star.svg";
 
 const Container = styled(Division)`
   display: grid;
-  grid-template-columns: 5% 55% 15% 15% 10%;
+  grid-template-columns: 7.5% 50% 15% 15% 12.5%;
   background-color: white;
   margin-bottom: 10px;
   padding: 16px;
   box-shadow: 0px 1px 3px #e7e7e7;
   align-items: center;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    max-width: 80vw;
+    height: 100%;
+    text-align: center;
+  }
 `;
 
 const CoverContainer = styled(Division)`
   position: relative;
   width: 58px;
   height: 58px;
+  @media (max-width: 1200px) {
+    max-width: 160px;
+    max-height: 160px;
+    padding-bottom: 16px;
+  }
 `;
 
 const Cover = styled.img`
@@ -28,6 +40,10 @@ const Cover = styled.img`
   border-radius: 4px;
   width: 100%;
   height: auto;
+  @media (max-width: 1200px) {
+    max-width: 160px;
+    max-height: 160px;
+  }
 `;
 
 const CoverIcon = styled(Division)`
@@ -49,6 +65,9 @@ const AlbumTitle = styled(Division)`
   font-size: 18px;
   line-height: 24px;
   color: #363636;
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
 `;
 
 const ArtistTitle = styled(Text)`
@@ -61,6 +80,9 @@ const ArtistTitle = styled(Text)`
   &:hover {
     color: #13d6ea;
   }
+  @media (max-width: 1200px) {
+    font-size: 12px;
+  }
 `;
 const TextContainer = styled(Division)`
   text-align: center;
@@ -68,11 +90,17 @@ const TextContainer = styled(Division)`
 const ReleasedLabel = styled(Text)`
   font-size: 14px;
   color: #a0a0a0;
+  @media (max-width: 1200px) {
+    font-size: 12px;
+  }
 `;
 const ReleasedValue = styled(Text)`
   font-size: 14px;
   color: #000000;
   font-weight: 500;
+  @media (max-width: 1200px) {
+    font-size: 12px;
+  }
 `;
 
 const Price = styled(Text)`
@@ -80,7 +108,12 @@ const Price = styled(Text)`
   text-align: center;
   line-height: 14px;
 `;
-const Favorite = styled(Text)``;
+const Favorite = styled(Division)`
+  @media (max-width: 1200px) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+`;
 
 export default function AlbumRow(props) {
   const { item, onClickMarkFavorite } = props;

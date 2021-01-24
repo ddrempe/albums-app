@@ -15,6 +15,12 @@ const StyledHeader = styled.header`
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.183679);
   position: relative;
   z-index: 10;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
 `;
 
 const Title = styled(Division)`
@@ -23,8 +29,10 @@ const Title = styled(Division)`
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
-
   color: #363636;
+  @media (max-width: 1200px) {
+    padding-bottom: 20px;
+  }
 `;
 
 export default function Header(props) {

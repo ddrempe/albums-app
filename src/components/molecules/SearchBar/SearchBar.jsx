@@ -15,6 +15,9 @@ const SearchBarContainer = styled(Division)`
   height: 40px;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+  @media (max-width: 1200px) {
+    max-width: 80vw;
+  }
 `;
 
 const SearchBarInput = styled(Input)`
@@ -27,7 +30,6 @@ const SearchBarInput = styled(Input)`
   line-height: 16px;
   color: #828282;
   padding-left: 23px;
-
   outline: none;
   border: none;
 `;
