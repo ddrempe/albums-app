@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Division from "components/atoms/Division/Division";
 import Input from "components/atoms/Input/Input";
 import SearchButton from "components/molecules/SearchButton/SearchButton";
+import { APP_SECONDARY } from "colours";
 
 const SearchBarContainer = styled(Division)`
   display: flex;
@@ -28,7 +29,7 @@ const SearchBarInput = styled(Input)`
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-  color: #828282;
+  color: ${APP_SECONDARY};
   padding-left: 23px;
   outline: none;
   border: none;

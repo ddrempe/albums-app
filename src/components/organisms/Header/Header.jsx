@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Division from "components/atoms/Division/Division";
 import Button from "components/atoms/Button/Button";
 import SearchBar from "components/molecules/SearchBar/SearchBar";
+import { APP_SECONDARY } from "colours";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -29,7 +30,7 @@ const Title = styled(Division)`
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
-  color: #363636;
+  color: ${APP_SECONDARY};
   @media (max-width: 1200px) {
     padding-bottom: 20px;
   }

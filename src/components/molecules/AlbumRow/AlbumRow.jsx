@@ -6,11 +6,12 @@ import styled from "styled-components";
 import Division from "components/atoms/Division/Division";
 import Button from "components/atoms/Button/Button";
 import { ReactComponent as StarIcon } from "assets/icons/star.svg";
+import { APP_PRIMARY, APP_SECONDARY, BLACK, NOBEL, WHITE } from "colours";
 
 const Container = styled(Division)`
   display: grid;
   grid-template-columns: 7.5% 50% 15% 15% 12.5%;
-  background-color: white;
+  background-color: ${WHITE};
   margin-bottom: 10px;
   padding: 16px;
   box-shadow: 0px 1px 3px #e7e7e7;
@@ -64,7 +65,7 @@ const AlbumTitle = styled(Division)`
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #363636;
+  color: ${APP_SECONDARY};
   @media (max-width: 1200px) {
     font-size: 14px;
   }
@@ -75,10 +76,10 @@ const ArtistTitle = styled(Text)`
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
-  color: #a0a0a0;
+  color: ${NOBEL};
   cursor: pointer;
   &:hover {
-    color: #13d6ea;
+    color: ${APP_PRIMARY};
   }
   @media (max-width: 1200px) {
     font-size: 12px;
@@ -89,14 +90,14 @@ const TextContainer = styled(Division)`
 `;
 const ReleasedLabel = styled(Text)`
   font-size: 14px;
-  color: #a0a0a0;
+  color: ${NOBEL};
   @media (max-width: 1200px) {
     font-size: 12px;
   }
 `;
 const ReleasedValue = styled(Text)`
   font-size: 14px;
-  color: #000000;
+  color: ${BLACK};
   font-weight: 500;
   @media (max-width: 1200px) {
     font-size: 12px;

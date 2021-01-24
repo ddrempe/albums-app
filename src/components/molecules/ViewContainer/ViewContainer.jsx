@@ -1,9 +1,10 @@
 import React from "react";
 import Division from "components/atoms/Division/Division";
 import styled from "styled-components";
+import { WHITE_SMOKE } from "colours";
 
 const StyledViewContainer = styled(Division)`
-  background-color: #f2f2f2;
+  background-color: ${WHITE_SMOKE};
   padding-left: 10%;
   padding-right: 10%;
   min-height: 85vh;

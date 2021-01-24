@@ -1,3 +1,4 @@
+import { APP_PRIMARY, WHITE } from "colours";
 import React from "react";
 import styled from "styled-components";
 
@@ -6,7 +7,7 @@ const BaseButton = styled.input`
   height: 25px;
   width: 125px;
   border: none;
-  color: white;
+  color: ${WHITE};
   text-align: center;
   font-family: Work Sans;
   font-style: normal;
@@ -20,22 +21,22 @@ const BaseButton = styled.input`
 `;
 
 const PrimaryButton = styled(BaseButton)`
-  background: #13d6ea;
+  background: ${APP_PRIMARY};
   &:hover {
     background: white;
-    border: 1px solid #13d6ea;
-    color: #13d6ea;
+    border: 1px solid ${APP_PRIMARY};
+    color: ${APP_PRIMARY};
   }
 `;
 
 const SecondaryButton = styled(BaseButton)`
   background: white;
-  color: #13d6ea;
+  color: ${APP_PRIMARY};
   text-decoration: underline;
   &:hover {
-    background: #13d6ea;
+    background: ${APP_PRIMARY};
     border: 1px solid white;
-    color: white;
+    color: ${WHITE};
   }
 `;
 
