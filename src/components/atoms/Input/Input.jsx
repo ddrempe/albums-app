@@ -4,7 +4,15 @@ import styled from "styled-components";
 const StyledInput = styled.input``;
 
 export default function Input(props) {
-  const { children, primary, secondary, ...rest } = props;
+  const { onChange, ...rest } = props;
 
-  return <StyledInput type="text" {...rest} />;
+  return (
+    <StyledInput
+      onChange={(event) => {
+        onChange(event.target.value);
+      }}
+      type="text"
+      {...rest}
+    />
+  );
 }

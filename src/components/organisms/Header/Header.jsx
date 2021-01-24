@@ -1,8 +1,9 @@
-import Division from "components/atoms/Division/Division";
-import Button from "components/atoms/Button/Button";
-import Input from "components/atoms/Input/Input";
 import React from "react";
 import styled from "styled-components";
+
+import Division from "components/atoms/Division/Division";
+import Button from "components/atoms/Button/Button";
+import SearchBar from "components/molecules/SearchBar/SearchBar";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -17,6 +18,7 @@ export default function Header(props) {
     children,
     actionButton,
     onActionButtonClick,
+    search,
     inputPlaceholder,
     onInputChange,
     inputSubmit,
@@ -26,11 +28,13 @@ export default function Header(props) {
   return (
     <StyledHeader>
       <Division>{children}</Division>
-      {onInputChange && (
-        <Division>
-          <Input placeholder={inputPlaceholder} onChange={onInputChange} />
-          <Button value={inputSubmit} onClick={onInputSubmit} />
-        </Division>
+      {search && (
+        <SearchBar
+          inputPlaceholder={inputPlaceholder}
+          onInputChange={onInputChange}
+          inputSubmit={inputSubmit}
+          onInputSubmit={onInputSubmit}
+        />
       )}
       {onActionButtonClick && (
         <Button value={actionButton} onClick={onActionButtonClick} />

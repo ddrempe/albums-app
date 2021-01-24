@@ -14,6 +14,7 @@ export default function Albums(props) {
   const limit = limitParam ? limitParam : 10;
 
   const [albums, setAlbums] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -43,9 +44,11 @@ export default function Albums(props) {
   return (
     <Fragment>
       <Header
+        search
         inputPlaceholder="Search"
-        onInputChange={(event) => {
-          console.log("onInputChange", event.target.value);
+        onInputChange={(value) => {
+          console.log("onInputChange", value);
+          setSearchValue(value);
         }}
         inputSubmit={"GO"}
         onInputSubmit={() => {
